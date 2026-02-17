@@ -4,9 +4,9 @@ import logica_calculohipoteca
 
 class TestCalculadoraHipoteca(unittest.TestCase):
 
-    # ===============================
+    
     # CASOS NORMALES
-    # ===============================
+   
 
     def test_normal_1(self):
         cuota, total, saldo = logica_calculohipoteca.calcular_credito(
@@ -28,9 +28,9 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 854_820_641, delta=200000)
 
 
-    # ===============================
+    
     # CASOS EXTRAORDINARIOS
-    # ===============================
+    
 
     def test_vivienda_muy_costosa(self):
         cuota, total, saldo = logica_calculohipoteca.calcular_credito(
@@ -92,9 +92,9 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 776_077_259, delta=200000)
 
 
-    # ===============================
+    
     # CASOS DE ERROR
-    # ===============================
+    
 
     def test_error_edad(self):
         resultado = logica_calculohipoteca.calcular_credito(
@@ -142,4 +142,5 @@ class TestCalculadoraHipoteca(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
 

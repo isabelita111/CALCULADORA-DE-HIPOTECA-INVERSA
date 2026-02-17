@@ -1,6 +1,6 @@
 def calcular_credito(valor_inmueble, tasa_anual, plazo_anios, porcentaje_financiado, edad):
 
-    # ===== VALIDACIONES =====
+    #  VALIDACIONES 
     if edad < 65:
         return "Error: la edad mínima para solicitar hipoteca inversa es de 65 años."
     
@@ -11,13 +11,13 @@ def calcular_credito(valor_inmueble, tasa_anual, plazo_anios, porcentaje_financi
         return "Error: la tasa de interés debe ser mayor a 0."
 
 
-    # ===== CONVERTIR A DECIMALES =====
+    #  CONVERTIR A DECIMALES 
     
     tasa_anual = tasa_anual / 100
     porcentaje_financiado = porcentaje_financiado / 100
 
 
-    # ===== CÁLCULOS =====
+    #  CÁLCULOS 
     
     monto_financiado = valor_inmueble * porcentaje_financiado
     
@@ -25,7 +25,7 @@ def calcular_credito(valor_inmueble, tasa_anual, plazo_anios, porcentaje_financi
     numero_pagos = plazo_anios * 12
 
 
-    # 1️⃣ CUOTA MENSUAL (equivalente a función PAGO de Excel)
+    #  CUOTA MENSUAL (equivalente a función PAGO de Excel)
     
     cuota_mensual = (
         tasa_mensual * monto_financiado
@@ -33,14 +33,15 @@ def calcular_credito(valor_inmueble, tasa_anual, plazo_anios, porcentaje_financi
     )
 
 
-    # 2️⃣ TOTAL ACUMULADO
+    # TOTAL ACUMULADO
     
     total_acumulado = cuota_mensual * numero_pagos
 
 
-    # 3️⃣ SALDO PROYECTADO
+    # SALDO PROYECTADO
     
     saldo_proyectado = monto_financiado * (1 + tasa_anual) ** plazo_anios
 
 
     return cuota_mensual, total_acumulado, saldo_proyectado
+

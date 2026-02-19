@@ -1,3 +1,4 @@
+
 def calcular_credito(valor_inmueble, tasa_anual, plazo_anios, porcentaje_financiado, edad):
 
     #  VALIDACIONES 
@@ -27,21 +28,23 @@ def calcular_credito(valor_inmueble, tasa_anual, plazo_anios, porcentaje_financi
 
     #  CUOTA MENSUAL (equivalente a función PAGO de Excel)
     
+    
     cuota_mensual = (
         tasa_mensual * monto_financiado
         / (1 - (1 + tasa_mensual) ** (-numero_pagos))
     )
 
-
-    # TOTAL ACUMULADO
     
+     # TOTAL ACUMULADO
+
     total_acumulado = cuota_mensual * numero_pagos
 
 
+
     # SALDO PROYECTADO
-    
+
     saldo_proyectado = monto_financiado * (1 + tasa_anual) ** plazo_anios
 
 
-    return cuota_mensual, total_acumulado, saldo_proyectado
+    return   cuota_mensual, total_acumulado, saldo_proyectado
 

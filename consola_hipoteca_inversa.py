@@ -1,5 +1,5 @@
 import logica_calculohipoteca
-import calculadora_hipoteca
+import test_calculadora_hipoteca
 
 
 valor_inmueble = int(input("Ingrese el valor del inmueble: "))

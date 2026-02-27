@@ -24,7 +24,19 @@ class TestCalculadoraHipoteca(unittest.TestCase):
     def test_normal_2(self):
         # Segundo escenario estándar para validar consistencia en resultados.
         cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
-            450_000_000, 7, 25, 35, 75
+            450_000_000, 7, 18, 38, 72
+        )
+
+        self.assertAlmostEqual(cuota, 1_177_585, delta=5000)
+        self.assertAlmostEqual(total, 254_358_389, delta=100000)
+        self.assertAlmostEqual(saldo, 488_062_221, delta=200000)
+
+
+        
+    def test_normal_3(self):
+        # Tercer escenario estándar para validar consistencia en resultados.
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
+            380_000_000, 7, 25, 35, 75
         )
 
         self.assertAlmostEqual(cuota, 1_113_177, delta=5000)

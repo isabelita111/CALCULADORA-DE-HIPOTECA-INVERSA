@@ -122,8 +122,8 @@ El simulador desarrollado demuestra cómo un modelo matemático puede representa
 * sostenibilidad financiera para la entidad,
 * control del riesgo.
 
-
-  ##  Justificación del porcentaje prestable menor al 100%
+---
+##  Justificación del porcentaje prestable menor al 100%
 
 En una hipoteca inversa el porcentaje prestable (LTV) no puede ser del 100% del valor del inmueble, incluso si el propietario entrega su vivienda como garantía total. Esto se debe a razones financieras y actuariales fundamentales:
 
@@ -146,3 +146,5 @@ En productos reales de hipoteca inversa, el porcentaje prestable suele oscilar a
 
 El uso de un LTV inferior al 100% no es una limitación del modelo, sino una condición necesaria para que el producto financiero sea viable y sostenible. Por esta razón, el simulador implementado utiliza porcentajes moderados que reflejan escenarios realistas del mercado.
 
+---
+# Instrucciones Para ejecutar el programa necesidad de usar el Visual Studio Code

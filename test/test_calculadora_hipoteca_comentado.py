@@ -59,7 +59,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 804_488_768, delta=200000)
 
     def test_plazo_muy_largo(self):
-        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_creditocalcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             350_000_000, 8, 30, 45, 72
         )
 
@@ -108,8 +108,8 @@ class TestCalculadoraHipoteca(unittest.TestCase):
     # =========================
 
     def test_error_edad(self):
-        with self.assertRaises(ErrorEdad):
-            logica_calculohipoteca_comentado.calcular_creditocalcular_credito(
+        with self.assertRaises(logica_calculohipoteca_comentado.ErrorEdad):
+            logica_calculohipoteca_comentado.calcular_credito(
                 300_000_000, 8, 20, 40, 50
             )
 

@@ -1,3 +1,8 @@
+from src.model import logica_calculohipoteca_comentado
+
+
+
+
 import logica_calculohipoteca_comentado
 import test_calculadora_hipoteca_comentado
 

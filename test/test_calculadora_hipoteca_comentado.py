@@ -1,11 +1,9 @@
+import sys
+sys.path.append("src")
+
+from model import logica_calculohipoteca_comentado
 import unittest
-from logica_calculohipoteca_comentado import (
-    calcular_credito,
-    ErrorEdad,
-    ErrorPorcentaje,
-    ErrorTasaNegativa,
-    ErrorPlazo
-)
+ 
 
 
 class TestCalculadoraHipoteca(unittest.TestCase):
@@ -19,7 +17,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
     # =========================
 
     def test_normal_1(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             300_000_000, 8, 20, 40, 70
         )
 
@@ -29,7 +27,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
 
     def test_normal_2(self):
         # Caso normal 2 según Excel
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             450_000_000, 7, 25, 35, 75
         )
 
@@ -39,7 +37,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
 
     def test_normal_3(self):
         # Caso normal 3 según Excel
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             380_000_000, 7, 18, 38, 72
         )
 
@@ -52,7 +50,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
     # =========================
 
     def test_vivienda_muy_costosa(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             900_000_000, 7.55, 15, 30, 80
         )
 
@@ -61,7 +59,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 804_488_768, delta=200000)
 
     def test_plazo_muy_largo(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_creditocalcular_credito(
             350_000_000, 8, 30, 45, 72
         )
 
@@ -70,7 +68,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 1_584_868_460, delta=300000)
 
     def test_financiacion_alta(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             250_000_000, 9, 20, 70, 68
         )
 
@@ -79,7 +77,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 980_771_884, delta=200000)
 
     def test_interes_muy_bajo(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             400_000_000, 5, 20, 40, 78
         )
 
@@ -88,7 +86,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 424_527_633, delta=200000)
 
     def test_persona_muy_mayor(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             280_000_000, 8, 10, 50, 85
         )
 
@@ -97,7 +95,7 @@ class TestCalculadoraHipoteca(unittest.TestCase):
         self.assertAlmostEqual(saldo, 302_249_500, delta=200000)
 
     def test_vivienda_economica(self):
-        cuota, total, saldo = calcular_credito(
+        cuota, total, saldo = logica_calculohipoteca_comentado.calcular_credito(
             150_000_000, 9, 25, 60, 70
         )
 
@@ -111,37 +109,37 @@ class TestCalculadoraHipoteca(unittest.TestCase):
 
     def test_error_edad(self):
         with self.assertRaises(ErrorEdad):
-            calcular_credito(
+            logica_calculohipoteca_comentado.calcular_creditocalcular_credito(
                 300_000_000, 8, 20, 40, 50
             )
 
     def test_error_porcentaje_mayor_100(self):
-        with self.assertRaises(ErrorPorcentaje):
-            calcular_credito(
+        with self.assertRaises(logica_calculohipoteca_comentado.ErrorPorcentaje):
+            logica_calculohipoteca_comentado.calcular_credito(
                 350_000_000, 7, 25, 120, 70
             )
 
     def test_error_porcentaje_negativo(self):
-        with self.assertRaises(ErrorPorcentaje):
-            calcular_credito(
+        with self.assertRaises(logica_calculohipoteca_comentado.ErrorPorcentaje):
+            logica_calculohipoteca_comentado.calcular_credito(
                 280_000_000, 8, 20, -30, 72
             )
 
     def test_error_tasa_negativa(self):
-        with self.assertRaises(ErrorTasaNegativa):
-            calcular_credito(
+        with self.assertRaises(logica_calculohipoteca_comentado.ErrorTasaNegativa):
+            logica_calculohipoteca_comentado.calcular_credito(
                 400_000_000, -5, 20, 40, 75
             )
 
     def test_error_plazo(self):
-        with self.assertRaises(ErrorPlazo):
-            calcular_credito(
+        with self.assertRaises(logica_calculohipoteca_comentado.ErrorPlazo):
+            logica_calculohipoteca_comentado.calcular_credito(
                 300_000_000, 8, 0, 40, 70
             )
 
     def test_error_valor_inmueble(self):
         with self.assertRaises(ValueError):
-            calcular_credito(
+            logica_calculohipoteca_comentado.calcular_credito(
                 0, 8, 20, 40, 70
             )
 

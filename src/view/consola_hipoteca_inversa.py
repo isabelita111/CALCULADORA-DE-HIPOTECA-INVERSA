@@ -3,8 +3,8 @@ from src.model import logica_calculohipoteca_comentado
 
 
 
-import logica_calculohipoteca_comentado
-import test_calculadora_hipoteca_comentado
+from model import logica_calculohipoteca_comentado
+from test import test_calculadora_hipoteca_comentado
 
 
 valor_inmueble = int(input("Ingrese el valor del inmueble: "))

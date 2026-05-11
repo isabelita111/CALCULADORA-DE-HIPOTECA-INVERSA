@@ -1,7 +1,7 @@
 import sys
 sys.path.append("..")
  
-from model.salidas import Salidas
+from src.model.salidas import Salidas
 from controller.salidas_controller import SalidasController
  
 try:

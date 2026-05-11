@@ -2,7 +2,7 @@ import sys
 sys.path.append("src")
 
 import psycopg2
-from model.entradas import Entradas
+from model.entradas import Entrada
 import secret_config
 
 class EntradasController:
@@ -20,7 +20,7 @@ class EntradasController:
         cursor.connection.commit()
         
 
-    def insertar(entradas: Entradas):
+    def insertar(entradas: Entrada):
         cursor = EntradasController.obtener_cursor()
         cursor.execute("""insert into entradas (cedula, valor_inmueble,tasa_capitalizacion, edad, plazo_simulacion, porcentaje_LTV
                         values ('{entradas.cedula}', {entradas.valor_inmueble}, {entradas.tasa_capitalizacion}, {entradas.edad}, 
@@ -33,7 +33,7 @@ class EntradasController:
         cursor.execute(f"""select cedula, valor_inmueble, tasa_capitalizacion, edad, plazo_simulacion, porcentaje_LTV from entradas where cedula = '{cedula}'""")
 
         fila =  cursor.fetchone()
-        resultado = Entradas(cedula=fila[0], valor_inmueble=fila[1], tasa_capitalizacion=fila[2], edad=fila[3], plazo_simulacion=fila[4], porcentaje_LTV=fila[5])
+        resultado = Entrada(cedula=fila[0], valor_inmueble=fila[1], tasa_capitalizacion=fila[2], edad=fila[3], plazo_simulacion=fila[4], porcentaje_LTV=fila[5])
         return resultado
 
     def obtener_cursor():

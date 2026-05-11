@@ -1,6 +1,5 @@
 **build
 **dist
-**__pycache__
 **.pytest_cache
 **.kivy
 **venv
@@ -9,3 +8,7 @@
 ***.pyc
 ***.pyo
 **.vscode
+__pycache__
+secret_config.py
+
+

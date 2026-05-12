@@ -1,5 +1,5 @@
 import sys
-sys.path.append("..")
+sys.path.append("src")
  
 from model.entradas import Entrada
 from controller.entradas_controller import EntradasController

@@ -229,3 +229,74 @@ Luego ejecuta:
 ```bash
 python src/view/gui/hipoteca_inversa_gui.py
 ```
+---
+ 
+## Configuración de la base de datos
+ 
+Este proyecto usa PostgreSQL como base de datos. Para conectarte necesitas crear un archivo `secret_config.py` en dos ubicaciones:
+ 
+- En la raíz del proyecto
+- Dentro de la carpeta `src/`
+### Contenido del archivo secret_config.py
+ 
+```python
+PGDATABASE="calculadora_ahorro_programado_txdt"
+PGUSER="calculadora_ahorro_programado_txdt_user"
+PGPASSWORD="K8SP87UIocKWaBA9zPav1sYExz6oDjhm"
+PGHOST="d7ln75e8bjmc73ag3vlg-a.virginia-postgres.render.com"
+PGPORT=5432
+```
+ 
+
+### Instalación de dependencias para la BD
+ 
+```bash
+pip install psycopg2-binary
+```
+ 
+### Ejecutar pruebas de la base de datos
+ 
+Desde la raíz del proyecto:
+ 
+```bash
+python -m pytest test/test_entradas.py
+python -m pytest test/test_salidas.py
+```
+ 
+### Ejecutar interfaces de la base de datos
+ 
+Desde la raíz del proyecto:
+ 
+```bash
+python src/view/crear_entrada.py
+python src/view/buscar_entrada.py
+python src/view/modificar_entrada.py
+python src/view/modificar_salida.py
+```
+ 
+### Estructura de archivos con BD
+ 
+```
+CALCULADORA-DE-HIPOTECA-INVERSA/
+│
+├── secret_config.py          ← crear manualmente (no está en el repo)
+├── secret_config_sample.py   ← ejemplo de referencia
+│
+├── src/
+│   ├── secret_config.py      ← crear manualmente (copia del anterior)
+│   ├── controller/
+│   │   ├── entradas_controller.py
+│   │   └── salidas_controller.py
+│   ├── model/
+│   │   ├── entradas.py
+│   │   └── salidas.py
+│   └── view/
+│       ├── crear_entrada.py
+│       ├── buscar_entrada.py
+│       ├── modificar_entrada.py
+│       └── modificar_salida.py
+│
+└── test/
+    ├── test_entradas.py
+    └── test_salidas.py
+```

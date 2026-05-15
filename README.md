@@ -255,27 +255,25 @@ pip install psycopg2-binary
 ```
  
 ### Ejecutar pruebas de la base de datos
- 
+
 Desde la raíz del proyecto:
- 
+
 ```bash
-python -m pytest test/test_entradas.py
-python -m pytest test/test_salidas.py
+python -m pytest test/test_calculos.py
 ```
- 
+
 ### Ejecutar interfaces de la base de datos
- 
+
 Desde la raíz del proyecto:
- 
+
 ```bash
 python src/view/crear_entrada.py
-python src/view/buscar_entrada.py
-python src/view/modificar_entrada.py
-python src/view/modificar_salida.py
+python src/view/buscar_calculo.py
+python src/view/modificar_calculo.py
 ```
- 
+
 ### Estructura de archivos con BD
- 
+
 ```
 CALCULADORA-DE-HIPOTECA-INVERSA/
 │
@@ -285,18 +283,16 @@ CALCULADORA-DE-HIPOTECA-INVERSA/
 ├── src/
 │   ├── secret_config.py      ← crear manualmente (copia del anterior)
 │   ├── controller/
-│   │   ├── entradas_controller.py
-│   │   └── salidas_controller.py
+│   │   └── calculos_controller.py
 │   ├── model/
-│   │   ├── entradas.py
-│   │   └── salidas.py
+│   │   ├── calculos.py
+│   │   └── logica_calculohipoteca_comentado.py
 │   └── view/
 │       ├── crear_entrada.py
-│       ├── buscar_entrada.py
-│       ├── modificar_entrada.py
-│       └── modificar_salida.py
+│       ├── buscar_calculo.py
+│       └── modificar_calculo.py
 │
 └── test/
-    ├── test_entradas.py
-    └── test_salidas.py
+    ├── test_calculadora_hipoteca_comentado.py
+    └── test_calculos.py
 ```

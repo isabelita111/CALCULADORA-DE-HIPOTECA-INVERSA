@@ -9,3 +9,5 @@ create table calculos(
     total_recibido_acumulado numeric NOT NULL,
     saldo_proyectado numeric NOT NULL
 );
+
+

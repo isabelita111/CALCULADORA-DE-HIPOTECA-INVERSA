@@ -2,26 +2,43 @@
 <html>
 
 <body>
-    <form action = "/calcular_montos">
-        <div>
-            valor del inmueble: <input type = "number" name = "valor_inmueble">
-        </div>
-        <div>
-            tasa de capitalizacion: <input type = "number" name = "tasa_capitalizacion">
-        </div>
-        <div>
-            plazo de simulacion: <input type = "number" name = "plazo_simulacion">
-        </div>
-        <div>
-            porcentaje LTV: <input type = "number" name = "porcentaje_LTV">
-        </div>
-        <div>
-            edad: <input type = "number" name = "edad">
-        </div>
-        <input type = "submit" value = "Calcular">
+    <form action = "/guardar_calculos">
+        <h2>Insertar Cálculo</h2>
+
+    <table>
+        <tr>
+            <td>Valor del inmueble:</td>
+            <td><input type = "number" name = "valor_inmueble"></td>
+        </tr>
+        <tr>
+            <td>Tasa de capitalización:</td>
+            <td><input type = "number" name = "tasa_capitalizacion"></td>
+        </tr>
+        <tr>
+            <td>Plazo de simulación:</td>
+            <td><input type = "number" name = "plazo_simulacion"></td>
+        </tr>
+        <tr>
+            <td>Porcentaje LTV:</td>
+            <td><input type = "number" name = "porcentaje_LTV"></td>
+        </tr>
+        <tr>
+            <td>Edad:</td>
+            <td><input type = "number" name = "edad"></td>
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
+        
+    <input type = "submit" value = "Calcular">
     </form>
 </body>
 
+    <p>
+        Si es la primera vez que ejecuta esta aplicación, necesitará crear las tablas en la base de datos
+        haciendo <a href="/crear_tablas">click aqui</a>
+    </p>
 
 
 

@@ -41,6 +41,7 @@ class ErrorValorInmueble(Exception):
 
 
 class credito():
+    cedula : str
     valor_inmueble : int
     tasa_capitalizacion : float
     plazo_simulacion : int
@@ -48,7 +49,8 @@ class credito():
     edad : int
 
 
-    def __init__(self,valor_inmueble, tasa_capitalizacion, plazo_simulacion, porcentaje_LTV, edad):
+    def __init__(self, cedula, valor_inmueble, tasa_capitalizacion, plazo_simulacion, porcentaje_LTV, edad):
+        self.cedula = cedula
         self.valor_inmueble = valor_inmueble
         self.tasa_capitalizacion = tasa_capitalizacion / 100
         self.plazo_simulacion = plazo_simulacion

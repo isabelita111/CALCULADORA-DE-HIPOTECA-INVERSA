@@ -7,17 +7,17 @@ import secret_config
 
 from model.logica_calculohipoteca_comentado import calculadora_hipoteca_inversa
 
-class calculosController:
+class CalculosController:
 
     def crear_tabla():
-        cursor = calculosController.obtener_cursor()
+        cursor = CalculosController.obtener_cursor()
         with open("sql/crear-calculos.sql", "r") as archivo:
             sql = archivo.read()
         cursor.execute(sql)
         cursor.connection.commit()
 
     def eliminar_tabla():
-        cursor = calculosController.obtener_cursor()
+        cursor = CalculosController.obtener_cursor()
         with open("sql/borrar-calculos.sql", "r") as archivo:
             sql = archivo.read()    
         cursor.execute(sql)
@@ -25,7 +25,7 @@ class calculosController:
         
 
     def insertar(calculos: Calculo):
-        cursor = calculosController.obtener_cursor()
+        cursor = CalculosController.obtener_cursor()
         monto_mensual_recibido = calculadora_hipoteca_inversa.calcular_monto_mensual_recibido(calculos)
         total_recibido_acumulado = calculadora_hipoteca_inversa.calcular_total_recibido_acumulado(calculos)
         saldo_proyectado = calculadora_hipoteca_inversa.calcular_saldo_proyectado(calculos)
@@ -47,7 +47,7 @@ class calculosController:
         cursor.connection.commit()
 
     def buscar_cedula(cedula):
-        cursor = calculosController.obtener_cursor()
+        cursor = CalculosController.obtener_cursor()
 
         cursor.execute("""
             SELECT cedula, valor_inmueble, tasa_capitalizacion, edad, plazo_simulacion, porcentaje_LTV, monto_mensual_recibido, total_recibido_acumulado, saldo_proyectado
@@ -71,7 +71,7 @@ class calculosController:
 
    
     def actualizar(calculos: Calculo):
-        cursor = calculosController.obtener_cursor()
+        cursor = CalculosController.obtener_cursor()
         monto_mensual_recibido = calculadora_hipoteca_inversa.calcular_monto_mensual_recibido(calculos)
         total_recibido_acumulado = calculadora_hipoteca_inversa.calcular_total_recibido_acumulado(calculos)
         saldo_proyectado = calculadora_hipoteca_inversa.calcular_saldo_proyectado(calculos)
@@ -103,7 +103,7 @@ class calculosController:
 
 
     def eliminar(cedula):
-        cursor = calculosController.obtener_cursor()
+        cursor = CalculosController.obtener_cursor()
         with open("sql/eliminar-calculos.sql", "r") as archivo:
             sql = archivo.read()
         cursor.execute(sql, (cedula,))

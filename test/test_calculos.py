@@ -3,15 +3,15 @@ import sys
 sys.path.append("src")
  
 from model.calculos import Calculo
-from controller.calculos_controller import calculosController
+from controller.calculos_controller import CalculosController
  
  
 class TestCalculos(unittest.TestCase):
  
     # Test Fixture: se ejecuta una sola vez antes de todos los tests
     def setUpClass():
-        calculosController.eliminar_tabla()
-        calculosController.crear_tabla()
+        CalculosController.eliminar_tabla()
+        CalculosController.crear_tabla()
  
     # ========================
     # CASOS DE INSERTAR
@@ -30,8 +30,8 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.insertar(calculo_prueba)
-        calculo_buscado = calculosController.buscar_cedula(cedula="1000111001")
+        CalculosController.insertar(calculo_prueba)
+        calculo_buscado = CalculosController.buscar_cedula(cedula="1000111001")
         self.assertIsNotNone(calculo_buscado)
         self.assertEqual(calculo_buscado.cedula, calculo_prueba.cedula)
         self.assertEqual(calculo_buscado.valor_inmueble, calculo_prueba.valor_inmueble)
@@ -49,8 +49,8 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.insertar(calculo_prueba)
-        calculo_buscado = calculosController.buscar_cedula(cedula=calculo_prueba.cedula)
+        CalculosController.insertar(calculo_prueba)
+        calculo_buscado = CalculosController.buscar_cedula(cedula=calculo_prueba.cedula)
         self.assertIsNotNone(calculo_buscado)
         self.assertEqual(calculo_buscado.cedula, calculo_prueba.cedula)
  
@@ -67,8 +67,8 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.insertar(calculo_prueba)
-        calculo_buscado = calculosController.buscar_cedula(cedula=calculo_prueba.cedula)
+        CalculosController.insertar(calculo_prueba)
+        calculo_buscado = CalculosController.buscar_cedula(cedula=calculo_prueba.cedula)
         self.assertIsNotNone(calculo_buscado)
         self.assertEqual(calculo_buscado.cedula, calculo_prueba.cedula)
  
@@ -78,7 +78,7 @@ class TestCalculos(unittest.TestCase):
  
     def test_buscar_cedula_no_existe(self):
         """Error: buscar una cédula que no está registrada en la BD"""
-        self.assertRaises(Exception, calculosController.buscar_cedula, "9999999999")
+        self.assertRaises(Exception, CalculosController.buscar_cedula, "9999999999")
  
     def test_llave_primaria(self):
         """Error: no se pueden insertar dos calculos con la misma cédula (PK)"""
@@ -93,7 +93,7 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.insertar(calculo_original)
+        CalculosController.insertar(calculo_original)
         calculo_duplicado = Calculo(
             cedula="1000111004",
             valor_inmueble=900_000_000,
@@ -105,7 +105,7 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        self.assertRaises(Exception, calculosController.insertar, calculo_duplicado)
+        self.assertRaises(Exception, CalculosController.insertar, calculo_duplicado)
  
     # ========================
     # CASOS DE MODIFICAR
@@ -124,7 +124,7 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.insertar(calculo_original)
+        CalculosController.insertar(calculo_original)
  
         calculo_actualizado = Calculo(
             cedula="2000222001",
@@ -137,9 +137,9 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.actualizar(calculo_actualizado)
+        CalculosController.actualizar(calculo_actualizado)
  
-        calculo_buscado = calculosController.buscar_cedula("2000222001")
+        calculo_buscado = CalculosController.buscar_cedula("2000222001")
         self.assertEqual(calculo_buscado.valor_inmueble, calculo_actualizado.valor_inmueble)
         self.assertEqual(calculo_buscado.plazo_simulacion, calculo_actualizado.plazo_simulacion)
  
@@ -156,9 +156,9 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        calculosController.insertar(calculo)
-        calculosController.eliminar(cedula="2000222002")
-        self.assertRaises(Exception, calculosController.buscar_cedula, "2000222002")
+        CalculosController.insertar(calculo)
+        CalculosController.eliminar(cedula="2000222002")
+        self.assertRaises(Exception, CalculosController.buscar_cedula, "2000222002")
  
     def test_actualizar_calculo_no_existe(self):
         """Error: actualizar un calculo con una cédula que no existe en la BD"""
@@ -173,7 +173,7 @@ class TestCalculos(unittest.TestCase):
             total_recibido_acumulado=0,
             saldo_proyectado=0
         )
-        self.assertRaises(Exception, calculosController.actualizar, calculo_inexistente)
+        self.assertRaises(Exception, CalculosController.actualizar, calculo_inexistente)
  
  
 if __name__ == '__main__':

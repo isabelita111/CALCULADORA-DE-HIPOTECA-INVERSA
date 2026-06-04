@@ -115,7 +115,8 @@ class CalculosController:
             user=secret_config.PGUSER,
             password=secret_config.PGPASSWORD,
             host=secret_config.PGHOST,
-            port=secret_config.PGPORT
+            port=secret_config.PGPORT,
+            sslmode='require'
         )
         cursor = connection.cursor()
         return cursor

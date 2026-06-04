@@ -31,6 +31,18 @@ def guardar_calculos():
     CalculosController.insertar(datos)
     return render_template('cuotas.html', cedula = datos.cedula, valor_inmueble=datos.valor_inmueble, tasa_capitalizacion=datos.tasa_capitalizacion, plazo_simulacion=datos.plazo_simulacion, porcentaje_LTV=datos.porcentaje_LTV, edad=datos.edad, monto_mensual_recibido=monto_mensual_recibido, total_recibido_acumulado=total_recibido_acumulado, saldo_proyectado=saldo_proyectado)
 
+@blueprint.route('/buscar')
+def buscar():
+    return render_template('buscar.html')
+
+@blueprint.route('/resultado_busqueda')
+def resultado_busqueda():
+    cedula = request.args.get("cedula", "").strip()
+    resultado = CalculosController.buscar_cedula(cedula)
+    if resultado is None:
+        return render_template('buscar.html', error=f"No se encontró ningún registro con la cédula {cedula}.")
+    return render_template('resultado_busqueda.html', calculo=resultado)
+
 if __name__ == '__main__':
     blueprint.run(debug=True)
 

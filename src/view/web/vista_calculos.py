@@ -30,7 +30,10 @@ def guardar_calculos():
     total_recibido_acumulado = f"{calculadora_hipoteca_inversa.calcular_total_recibido_acumulado(datos):.0f}"
     saldo_proyectado = f"{calculadora_hipoteca_inversa.calcular_saldo_proyectado(datos):.0f}"
     CalculosController.insertar(datos)
-    return render_template('cuotas.html', cedula = datos.cedula, valor_inmueble=datos.valor_inmueble, tasa_capitalizacion=datos.tasa_capitalizacion, plazo_simulacion=datos.plazo_simulacion, porcentaje_LTV=datos.porcentaje_LTV, edad=datos.edad, monto_mensual_recibido=monto_mensual_recibido, total_recibido_acumulado=total_recibido_acumulado, saldo_proyectado=saldo_proyectado)
+    return render_template('cuotas.html', cedula = datos.cedula, valor_inmueble=datos.valor_inmueble,
+                            tasa_capitalizacion=datos.tasa_capitalizacion, plazo_simulacion=datos.plazo_simulacion,
+                              porcentaje_LTV=datos.porcentaje_LTV, edad=datos.edad, monto_mensual_recibido=monto_mensual_recibido, 
+                              total_recibido_acumulado=total_recibido_acumulado, saldo_proyectado=saldo_proyectado)
 
 @blueprint.route('/buscar')
 def buscar():

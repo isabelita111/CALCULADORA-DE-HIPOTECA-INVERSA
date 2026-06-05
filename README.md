@@ -240,10 +240,10 @@ Este proyecto usa PostgreSQL como base de datos. Para conectarte necesitas crear
 ### Contenido del archivo secret_config.py
  
 ```python
-PGDATABASE="calculadora_ahorro_programado_txdt"
-PGUSER="calculadora_ahorro_programado_txdt_user"
-PGPASSWORD="K8SP87UIocKWaBA9zPav1sYExz6oDjhm"
-PGHOST="d7ln75e8bjmc73ag3vlg-a.virginia-postgres.render.com"
+PGDATABASE="calculadora_hipoteca_inversa_2t3a"
+PGUSER="calculadora_hipoteca_inversa_2t3a_user"
+PGPASSWORD="vu8LaqiKT72f0Zip3jqhMt57KIOAEXdj"
+PGHOST="d8h1v6uk1jcs739d4oog-a.virginia-postgres.render.com"
 PGPORT=5432
 ```
  
@@ -296,3 +296,35 @@ CALCULADORA-DE-HIPOTECA-INVERSA/
     ├── test_calculadora_hipoteca_comentado.py
     └── test_calculos.py
 ```
+## Ejecutar la aplicación web localmente
+
+### Requisitos
+- Python 3.x
+- pip
+
+### Instalación de dependencias
+```bash
+pip install -r requirements.txt
+```
+
+### Configuración de la base de datos
+Crea el archivo `secret_config.py` basándote en `secret_config_sample.py` y completa los datos que agregamos anteriormente que utilizamos para crear la base datos PostgreSQL:
+
+### Ejecución
+Desde la raíz del proyecto ejecuta:
+
+```bash
+python app.py
+```
+
+Abre el navegador en `http://127.0.0.1:5000`
+
+### Base de datos en blanco
+Si es la primera vez que ejecutas la aplicación, crea la tabla entrando a:
+
+```
+http://127.0.0.1:5000/crear_tabla
+```
+Adicionalmente puede ingresar al sitio web mediante este link
+https://calculadora-de-hipoteca-inversa-1.onrender.com
+

@@ -8,17 +8,18 @@ from controller.calculos_controller import CalculosController
 
 blueprint = Blueprint("Vista_calculos",__name__, "templates")
 
-
-
 @blueprint.route('/')
-def datos():
+def inicio():
+    return render_template('inicio.html')
+
+@blueprint.route('/insertar')
+def insertar():
     return render_template('datos.html')
+
 @blueprint.route('/crear_tabla')
 def crear_tabla():
     CalculosController.crear_tabla()
     return "Tabla creada"
-
-
 
 @blueprint.route('/guardar_calculos')
 def guardar_calculos():
@@ -43,6 +44,23 @@ def resultado_busqueda():
         return render_template('buscar.html', error=f"No se encontró ningún registro con la cédula {cedula}.")
     return render_template('resultado_busqueda.html', calculo=resultado)
 
+@blueprint.route('/eliminar')
+def eliminar_form():
+    return render_template('eliminar.html')
+
+@blueprint.route('/confirmar_eliminar')
+def confirmar_eliminar():
+    cedula = request.args.get("cedula", "").strip()
+    resultado = CalculosController.buscar_cedula(cedula)
+    if resultado is None:
+        return render_template('eliminar.html', error=f"No se encontró ningún registro con la cédula {cedula}.")
+    return render_template('confirmar_eliminar.html', calculo=resultado)
+
+@blueprint.route('/ejecutar_eliminar')
+def ejecutar_eliminar():
+    cedula = request.args.get("cedula", "").strip()
+    CalculosController.eliminar(cedula)
+    return render_template('eliminado.html', cedula=cedula)
+
 if __name__ == '__main__':
     blueprint.run(debug=True)
-

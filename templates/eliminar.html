@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Cálculo</title>
+</head>
+<body>
+    <h2>Eliminar Cálculo por Cédula</h2>
+    <form action="/confirmar_eliminar">
+        <label>Cédula: <input type="text" name="cedula" required></label>
+        <input type="submit" value="Buscar y eliminar">
+    </form>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <br><a href="/">← Volver al inicio</a>
+</body>
+</html>

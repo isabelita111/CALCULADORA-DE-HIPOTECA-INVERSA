@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Cálculo</title>
+</head>
+<body>
+    <h2>Buscar Cálculo por Cédula</h2>
+    <form action="/resultado_busqueda">
+        <label>Cédula: <input type="text" name="cedula" required></label>
+        <input type="submit" value="Buscar">
+    </form>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    <br><a href="/">← Volver al inicio</a>
+</body>
+</html>

@@ -1,4 +1,4 @@
-create table calculos(
+create table if not exists calculos(
     cedula varchar(10) NOT NULL primary key,
     valor_inmueble numeric NOT NULL,
     tasa_capitalizacion numeric NOT NULL,
